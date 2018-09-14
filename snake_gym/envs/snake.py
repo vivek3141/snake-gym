@@ -13,6 +13,7 @@ class SnakeGame(object):
         self.surface = self.surface.convert()
         self.surface.fill((255, 255, 255))
         self.clock = pygame.time.Clock()
+        self.fps = 60
 
         pygame.key.set_repeat(1, 40)
 
@@ -45,7 +46,7 @@ class SnakeGame(object):
         state = SnakeGame._get_image(self.surface)
         pygame.display.flip()
         pygame.display.update()
-        self.fpsClock.tick(FPS + self.snake.length / 3)
+        self.fpsClock.tick(self.fps + self.snake.length / 3)
         done = False
         return state, self.snake.length, done, {}
 
