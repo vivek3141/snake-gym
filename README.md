@@ -10,3 +10,13 @@ Implementation for the NEAT algorithm and RL agents can be found in `examples/`
     ```python
     env.fps = 60
     ```
+## Installation
+For the latest installation, run
+```bash
+git clone https://github.com/vivek3141/snake-ai
+pip install -e .
+```
+You can install the latest release by
+```bash
+pip install snake_gym
+```
