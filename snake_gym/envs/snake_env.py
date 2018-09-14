@@ -1,19 +1,19 @@
 import gym
 from gym import error, spaces, utils
 from gym.utils import seeding
-
+from snake_gym.envs.snake import Snake
 
 class SnakeEnv(gym.Env):
     metadata = {'render.modes': ['human']}
 
     def __init__(self):
-        pass
+        self._s = Snake()
 
     def step(self, action):
-        pass
+        self._s.step(action)
 
     def reset(self):
-        pass
+        self._s = Snake()
 
     def render(self, mode='human', close=False):
-        pass
+        raise NotImplementedError
