@@ -38,16 +38,24 @@ class SnakeGame(object):
         self.apple.draw(self.surface)
         font = pygame.font.Font(None, 36)
         text = font.render(str(self.snake.length), 1, (10, 10, 10))
-        textpos = text.get_rect()
-        textpos.centerx = 20
-        #self.surface.blit(text, textpos)
+        text_pos = text.get_rect()
+        text_pos.centerx = 20
+        # self.surface.blit(text, textpos)
         self.screen.blit(self.surface, (0, 0))
-        print(self.surface)
+        state = SnakeGame._get_image(self.surface)
         pygame.display.flip()
         pygame.display.update()
         self.fpsClock.tick(FPS + self.snake.length / 3)
         done = False
-        return _, self.snake.length, done, {}
+        return state, self.snake.length, done, {}
+
+    @staticmethod
+    def _get_image(surface):
+        ret = []
+        for j in range(SCREEN_HEIGHT):
+            for k in range(SCREEN_WIDTH):
+                ret.append(surface.get_at((i, k)))
+        return ret
 
 
 s = SnakeGame()
