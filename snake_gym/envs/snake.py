@@ -4,6 +4,7 @@ import time
 import random
 from snake_gym.envs.modules import *
 from pygame.locals import *
+import numpy as np
 
 
 class SnakeGame(object):
@@ -52,13 +53,8 @@ class SnakeGame(object):
 
     @staticmethod
     def _get_image(surface):
-        ret = []
+        ret = [[0] * SCREEN_WIDTH] * SCREEN_HEIGHT
         for j in range(SCREEN_HEIGHT):
             for k in range(SCREEN_WIDTH):
-                ret.append(surface.get_at((i, k)))
-        return ret
-
-
-s = SnakeGame()
-for i in range(100000):
-    s.step(random.randint(0, 3))
+                ret[j][k] = surface.get_at((j, k))
+        return np.array(ret)
