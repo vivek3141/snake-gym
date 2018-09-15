@@ -53,7 +53,7 @@ class SnakeGame(object):
 
     @staticmethod
     def _get_image(surface):
-        ret = list(map(lambda x: list(x), np.zeros((150,150))))
+        ret = list(map(lambda x: list(x), np.zeros((SCREEN_HEIGHT, SCREEN_WIDTH))))
         for j in range(SCREEN_HEIGHT):
             for k in range(SCREEN_WIDTH):
                 ret[j][k] = surface.get_at((k, j))
