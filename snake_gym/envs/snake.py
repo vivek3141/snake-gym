@@ -56,5 +56,5 @@ class SnakeGame(object):
         ret = list(map(lambda x: list(x), np.zeros((150,150))))
         for j in range(SCREEN_HEIGHT):
             for k in range(SCREEN_WIDTH):
-                ret[j][k] = surface.get_at((j, k))
+                ret[j][k] = surface.get_at((k, j))
         return np.array(ret)
