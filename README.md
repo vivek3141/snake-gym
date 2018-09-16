@@ -20,3 +20,11 @@ You can install the latest release by
 ```bash
 pip install snake_gym
 ```
+
+## Creating The Environment
+The environment can be created by doing the following:
+```python
+import gym
+import snake_gym
+env = gym.make("snake-v0")
+```
