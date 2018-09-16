@@ -4,6 +4,9 @@ from PIL import Image
 import numpy as np
 from snake_gym.envs.modules import *
 
+GRID_HEIGHT = int(GRID_HEIGHT)
+GRID_WIDTH = int(GRID_WIDTH)
+
 
 def equals(arr1, arr2):
     for i in range(4):
@@ -13,11 +16,11 @@ def equals(arr1, arr2):
 
 
 def process(img):
-    ret = list(map(list, np.zeros((15, 15))))
+    ret = list(map(list, np.zeros((GRID_HEIGHT, GRID_WIDTH))))
     ret = list(map(lambda x: list(map(int, x)), ret))
     for i in range(GRID_HEIGHT):
         for k in range(GRID_WIDTH):
-            if not equals(state[GRIDSIZE * i][GRIDSIZE * i], [255, 255, 255, 255]):
+            if not equals(img[GRIDSIZE * k][GRIDSIZE * i], [255, 255, 255, 255]):
                 ret[k][i] = 1
         print(ret[i])
     return ret
