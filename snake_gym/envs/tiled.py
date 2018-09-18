@@ -25,7 +25,7 @@ class SnakeEnvTiled(SnakeEnv):
 
     @staticmethod
     def _equals(arr1, arr2):
-        for i in range(4):
+        for i in range(len(arr1)):
             if arr1[i] != arr2[i]:
                 return False
         return True
@@ -34,8 +34,11 @@ class SnakeEnvTiled(SnakeEnv):
     def _process(img):
         ret = list(map(list, np.zeros((GRID_HEIGHT, GRID_WIDTH))))
         ret = list(map(lambda x: list(map(int, x)), ret))
-        for i in range(GRID_HEIGHT):
-            for k in range(GRID_WIDTH):
-                if not SnakeEnvTiled._equals(img[GRIDSIZE * k][GRIDSIZE * i], [255, 255, 255, 255]):
-                    ret[k][i] = 1
+        for i in range(0, SCREEN_HEIGHT, GRIDSIZE):
+            for k in range(0, SCREEN_WIDTH, GRIDSIZE):
+                if SnakeEnvTiled._equals(img[i][k], [255, 0, 0, 255]):
+                    ret[int(i / 15)][int(k / 15)] = 1
+                elif SnakeEnvTiled._equals(img[i][k], [0, 0, 0, 255]):
+                    ret[int(i / 15)][int(k / 15)] = 2
+            print(ret[int(i / 15)])
         return ret
