@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='snake_gym',
-    version='0.3',
+    version='1.0',
     author="Vivek Verma",
     author_email="vivnps.verma@gmail.com",
     url="https://github.com/vivek3141/snake-ai",
