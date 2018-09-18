@@ -28,3 +28,10 @@ import gym
 import snake_gym
 env = gym.make("snake-v0")
 ```
+
+## Environments
+* `snake-v0` Returns a 150x150 RGB image in the form of a numpy array for the observations
+* `snake-tiled-v0` Returns a 10x10 matrix for the observations. 
+    * `0` is empty space
+    * `1` is the snake
+    * `2` is the food

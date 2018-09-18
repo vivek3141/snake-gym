@@ -37,8 +37,8 @@ class SnakeEnvTiled(SnakeEnv):
         for i in range(0, SCREEN_HEIGHT, GRIDSIZE):
             for k in range(0, SCREEN_WIDTH, GRIDSIZE):
                 if SnakeEnvTiled._equals(img[i][k], [255, 0, 0, 255]):
-                    ret[int(i / 15)][int(k / 15)] = 1
-                elif SnakeEnvTiled._equals(img[i][k], [0, 0, 0, 255]):
                     ret[int(i / 15)][int(k / 15)] = 2
+                elif SnakeEnvTiled._equals(img[i][k], [0, 0, 0, 255]):
+                    ret[int(i / 15)][int(k / 15)] = 1
             print(ret[int(i / 15)])
         return ret
