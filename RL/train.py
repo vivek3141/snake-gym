@@ -5,6 +5,6 @@ import random
 env = gym.make("snake-v0")
 done = False
 env.reset()
-while True:
+while not done:
     step = random.randint(0, 3)
-    state, done, reward, info = env.step(step)
+    state, reward, done, info = env.step(step)

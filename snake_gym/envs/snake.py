@@ -30,15 +30,19 @@ class SnakeGame(object):
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
+                self.done = True
 
-        if self.done:
-            state = SnakeGame._get_image(self.surface)
-            return state, self.snake.length, self.done, {}
         act = [UP, DOWN, LEFT, RIGHT]
         self.snake.point(act[key])
 
         self.surface.fill((255, 255, 255))
-        self.snake.move()
+        try:
+            self.snake.move()
+        except SnakeException:
+            self.done = True
+        if self.done:
+            state = SnakeGame._get_image(self.surface)
+            return state, self.snake.length, self.done, {}
         check_eat(self.snake, self.apple)
         self.snake.draw(self.surface)
         self.apple.draw(self.surface)
@@ -52,7 +56,7 @@ class SnakeGame(object):
         pygame.display.flip()
         pygame.display.update()
         self.fpsClock.tick(self.fps + self.snake.length / 3)
-        return state, self.snake.length, self.done, {}
+        return state, self.snake.length, False, {}
 
     @staticmethod
     def _get_image(surface):

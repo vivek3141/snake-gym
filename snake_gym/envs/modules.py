@@ -18,6 +18,10 @@ def draw_box(surf, color, pos):
     pygame.draw.rect(surf, color, r)
 
 
+class SnakeException(Exception):
+    pass
+
+
 class Snake(object):
     def __init__(self):
         self.lose()
@@ -43,7 +47,7 @@ class Snake(object):
         new = (((cur[0] + (x * GRIDSIZE)) % SCREEN_WIDTH), (cur[1] + (y * GRIDSIZE)) % SCREEN_HEIGHT)
         if len(self.positions) > 2 and new in self.positions[2:]:
             self.lose()
-            exit()
+            raise SnakeException
         else:
             self.positions.insert(0, new)
             if len(self.positions) > self.length:
