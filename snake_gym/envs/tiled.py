@@ -32,7 +32,7 @@ class SnakeEnvTiled(SnakeEnv):
 
     @staticmethod
     def _process(img):
-        ret = list(map(list, np.zeros((GRID_HEIGHT, GRID_WIDTH))))
+        ret = list(map(list, np.zeros((int(GRID_HEIGHT), int(GRID_WIDTH)))))
         ret = list(map(lambda x: list(map(int, x)), ret))
         for i in range(0, SCREEN_HEIGHT, GRIDSIZE):
             for k in range(0, SCREEN_WIDTH, GRIDSIZE):
@@ -40,5 +40,4 @@ class SnakeEnvTiled(SnakeEnv):
                     ret[int(i / 15)][int(k / 15)] = 2
                 elif SnakeEnvTiled._equals(img[i][k], [0, 0, 0, 255]):
                     ret[int(i / 15)][int(k / 15)] = 1
-            print(ret[int(i / 15)])
         return ret

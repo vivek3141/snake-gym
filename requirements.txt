@@ -1,4 +1,3 @@
 pygame
 numpy
-neat-python
-dopamine-rl
+gym
