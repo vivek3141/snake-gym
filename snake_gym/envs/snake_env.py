@@ -8,6 +8,8 @@ class SnakeEnv(gym.Env):
     metadata = {'render.modes': ['human']}
 
     def __init__(self):
+        self.observation_space = []
+        self.action_space = []
         self._s = SnakeGame()
 
     def step(self, action):
