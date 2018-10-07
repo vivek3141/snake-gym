@@ -18,7 +18,7 @@ pip install -e .
 ```
 You can install the latest release by
 ```bash
-pip install snake_gym
+pip install snake-gym
 ```
 
 ## Creating The Environment

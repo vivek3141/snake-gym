@@ -16,6 +16,7 @@ class Train:
 
     @staticmethod
     def callback(local, glbal):
+        return False
         return bool(local['t'] > 100 and sum(local['episode_rewards'][-101:-1]) / 100 >= 0.95)
 
     def main(self):
@@ -23,7 +24,7 @@ class Train:
         set_global_seeds(self.seed)
         env = gym.make("snake-tiled-v0")
 
-        model = deepq.models.cnn_to_mlp([(5, 2, 1)], [10])
+        model = deepq.models.cnn_to_mlp()
 
         act = deepq.learn(
             env,
