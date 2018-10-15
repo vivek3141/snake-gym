@@ -16,7 +16,6 @@ class Train:
 
     @staticmethod
     def callback(local, glbal):
-        return False
         return bool(local['t'] > 100 and sum(local['episode_rewards'][-101:-1]) / 100 >= 0.95)
 
     def main(self):
