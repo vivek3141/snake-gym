@@ -27,6 +27,7 @@ class SnakeGame(object):
         self.apple = Apple()
 
     def step(self, key):
+        length = self.snake.length
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
@@ -34,7 +35,6 @@ class SnakeGame(object):
 
         act = [UP, DOWN, LEFT, RIGHT]
         self.snake.point(act[key])
-
         self.surface.fill((255, 255, 255))
         try:
             self.snake.move()
@@ -42,7 +42,7 @@ class SnakeGame(object):
             self.done = True
         if self.done:
             state = SnakeGame._get_image(self.surface)
-            return state, self.snake.length, self.done, {}
+            return state, length, self.done, {}
         check_eat(self.snake, self.apple)
         self.snake.draw(self.surface)
         self.apple.draw(self.surface)
@@ -50,7 +50,7 @@ class SnakeGame(object):
         text = font.render(str(self.snake.length), 1, (10, 10, 10))
         text_pos = text.get_rect()
         text_pos.centerx = 20
-        # self.surface.blit(text, textpos)
+        self.surface.blit(text, text_pos)
         self.screen.blit(self.surface, (0, 0))
         state = SnakeGame._get_image(self.surface)
         pygame.display.flip()
