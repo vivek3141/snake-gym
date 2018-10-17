@@ -20,7 +20,42 @@ class Train:
         self.par = parallel
         self.level = level
 
+    def _fitness_func(self, genome, config, queue):
+        env = gym.make('ppaquette/SuperMarioBros-1-1-Tiles-v0')
+        # env.configure(lock=self.lock)
+        try:
+            state = env.reset()
+            net = neat.nn.FeedForwardNetwork.create(genome, config)
+            done = False
+            i = 0
+            old = 40
+            while not done:
+                state = state.flatten()
+                output = net.activate(state)
+                output = self._get_actions(output)
+                s, reward, done, info = env.step(output)
+                state = s
+                i += 1
+                if i % 50 == 0:
+                    if old == info['distance']:
+                        break
+                    else:
+                        old = info['distance']
 
+            # [print(str(i) + " : " + str(info[i]), end=" ") for i in info.keys()]
+            # print("\n******************************")
+
+            fitness = -1 if info['distance'] <= 40 else info['distance']
+            if fitness >= 3252:
+                pickle.dump(genome, open("finisher.pkl", "wb"))
+                env.close()
+                print("Done")
+                exit()
+            queue.put(fitness)
+            env.close()
+        except KeyboardInterrupt:
+            env.close()
+            exit()
 
     def _eval_genomes(self, genomes, config):
         idx, genomes = zip(*genomes)
