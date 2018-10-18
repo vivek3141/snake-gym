@@ -21,12 +21,6 @@ class SnakeEnvTiled(SnakeEnv):
         state = SnakeEnvTiled._process(state)
         return state, reward, done, info
 
-    def reset(self):
-        super().reset()
-
-    def render(self, mode='human', close=False):
-        super().render()
-
     @staticmethod
     def _equals(arr1, arr2):
         for i in range(len(arr1)):
