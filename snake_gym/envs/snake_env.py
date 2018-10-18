@@ -19,7 +19,7 @@ class SnakeEnv(gym.Env):
 
     def reset(self):
         self._s = SnakeGame()
-        return self._s
+        return self._s.reset()
 
     def render(self, mode='human', close=False):
         raise NotImplementedError
