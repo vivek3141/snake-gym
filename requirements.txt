@@ -2,3 +2,4 @@ pygame
 numpy
 gym
 baselines
+neat
