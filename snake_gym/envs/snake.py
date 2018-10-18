@@ -58,10 +58,9 @@ class SnakeGame(object):
         self.fpsClock.tick(self.fps + self.snake.length / 3)
         return state, self.snake.length, False, {}
 
-    @staticmethod
-    def _get_image(surface):
+    def _get_image(self):
         ret = list(map(lambda x: list(x), np.zeros((SCREEN_HEIGHT, SCREEN_WIDTH))))
         for j in range(SCREEN_HEIGHT):
             for k in range(SCREEN_WIDTH):
-                ret[j][k] = surface.get_at((k, j))
+                ret[j][k] = self.surface.get_at((k, j))
         return np.array(ret)
