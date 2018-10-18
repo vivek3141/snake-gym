@@ -11,10 +11,6 @@ gym.logger.set_level(40)
 
 class Train:
     def __init__(self, generations, parallel=2, level="1-1"):
-        self.actions = [
-            [0, 0, 0, 1, 0, 1],
-            [0, 0, 0, 1, 1, 1],
-        ]
         self.generations = generations
         self.lock = mp.Lock()
         self.par = parallel
@@ -30,7 +26,7 @@ class Train:
             while not done:
                 state = state.flatten()
                 output = net.activate(state)
-                output = self._get_actions(output)
+                output = Train._get_actions(output)
                 s, reward, done, info = env.step(output)
                 state = s
 
@@ -46,8 +42,9 @@ class Train:
             env.close()
             exit()
 
-    def _get_actions(self, a):
-        return self.actions[a.index(max(a))]
+    @staticmethod
+    def _get_actions(a):
+        return a.index(max(a))
 
     def _eval_genomes(self, genomes, config):
         idx, genomes = zip(*genomes)
@@ -77,9 +74,7 @@ class Train:
         p.add_reporter(stats)
         print("loaded checkpoint...")
         winner = p.run(self._eval_genomes, n)
-        win = p.best_genome
         pickle.dump(winner, open('winner.pkl', 'wb'))
-        pickle.dump(win, open('real_winner.pkl', 'wb'))
 
         visualize.draw_net(config, winner, True)
         visualize.plot_stats(stats, ylog=False, view=True)

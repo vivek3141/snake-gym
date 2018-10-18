@@ -42,4 +42,4 @@ class SnakeEnvTiled(SnakeEnv):
                     ret[int(i / 15)][int(k / 15)] = 2
                 elif SnakeEnvTiled._equals(img[i][k], [0, 0, 0, 255]):
                     ret[int(i / 15)][int(k / 15)] = 1
-        return ret
+        return np.array(ret)
