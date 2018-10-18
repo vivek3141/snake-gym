@@ -12,9 +12,13 @@ class SnakeEnvTiled(SnakeEnv):
 
     def __init__(self):
         super().__init__()
-        self.observation_space = spaces.Box(low=0, high=3, shape=[10,10])
+        self.observation_space = spaces.Box(low=0, high=3, shape=[10, 10])
         self._action_set = [x for x in range(4)]
         self.action_space = spaces.Discrete(4)
+
+    def reset(self):
+        img = super().reset()
+        return SnakeEnvTiled._process(img)
 
     def step(self, action):
         state, reward, done, info = self._s.step(action)
