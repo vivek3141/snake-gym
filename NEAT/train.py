@@ -3,7 +3,6 @@ import neat
 import gym, snake_gym
 import pickle
 import multiprocessing as mp
-from neat import nn, population, statistics
 from visualize import *
 
 gym.logger.set_level(40)
