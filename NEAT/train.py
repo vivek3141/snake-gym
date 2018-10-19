@@ -4,7 +4,7 @@ import gym, snake_gym
 import pickle
 import multiprocessing as mp
 from neat import nn, population, statistics
-import visualize
+from visualize import *
 
 gym.logger.set_level(40)
 
@@ -30,12 +30,7 @@ class Train:
                 s, reward, done, info = env.step(output)
                 state = s
 
-            fitness = -1 if reward <= 0 else reward
-            if fitness >= 7:
-                pickle.dump(genome, open("finisher.pkl", "wb"))
-                env.close()
-                print("Done")
-                exit()
+            fitness = -1 if reward == 0 else reward
             queue.put(fitness)
             env.close()
         except KeyboardInterrupt:
@@ -76,9 +71,9 @@ class Train:
         winner = p.run(self._eval_genomes, n)
         pickle.dump(winner, open('winner.pkl', 'wb'))
 
-        visualize.draw_net(config, winner, True)
-        visualize.plot_stats(stats, ylog=False, view=True)
-        visualize.plot_species(stats, view=True)
+        draw_net(config, winner, True)
+        plot_stats(stats, ylog=False, view=True)
+        plot_species(stats, view=True)
 
     def main(self, config_file='config'):
         local_dir = os.path.dirname(__file__)

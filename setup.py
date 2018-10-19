@@ -4,6 +4,7 @@ setup(
     name='snake_gym',
     version='1.6',
     author="Vivek Verma",
+    packages=["snake_gym"],
     author_email="vivnps.verma@gmail.com",
     url="https://github.com/vivek3141/snake-ai",
     license='MIT',
