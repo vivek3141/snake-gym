@@ -21,13 +21,18 @@ class Train:
             net = neat.nn.FeedForwardNetwork.create(genome, config)
             done = False
             reward = 0
+            old = 0
+            i = 0
             while not done:
                 state = state.flatten()
                 output = net.activate(state)
                 output = Train._get_actions(output)
                 s, reward, done, info = env.step(output)
+                old = reward
                 state = s
-
+                i += 1
+                if i % 100 == 0 and old == reward:
+                    break
             fitness = -1 if reward == 0 else reward
             queue.put(fitness)
             env.close()
