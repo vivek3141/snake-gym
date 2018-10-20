@@ -65,10 +65,8 @@ class Train:
         p.add_reporter(neat.Checkpointer(5))
         stats = neat.StatisticsReporter()
         p.add_reporter(stats)
-        #print("loaded checkpoint...")
         winner = p.run(self._eval_genomes, n)
         pickle.dump(winner, open('winner.pkl', 'wb'))
-
         draw_net(config, winner, True)
         plot_stats(stats, ylog=False, view=True)
         plot_species(stats, view=True)
