@@ -4,6 +4,9 @@ import gym, snake_gym
 import pickle
 import multiprocessing as mp
 from visualize import *
+import os
+os.chdir("checkpoints")
+
 
 gym.logger.set_level(40)
 
@@ -67,7 +70,7 @@ class Train:
                              config_file)
         p = neat.Population(config)
         p.add_reporter(neat.StdOutReporter(True))
-        p.add_reporter(neat.Checkpointer(5))
+        p.add_reporter(neat.Checkpointer(generation_interval=5))
         stats = neat.StatisticsReporter()
         p.add_reporter(stats)
         winner = p.run(self._eval_genomes, n)
