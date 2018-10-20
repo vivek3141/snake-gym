@@ -9,11 +9,10 @@ gym.logger.set_level(40)
 
 
 class Train:
-    def __init__(self, generations, parallel=2, level="1-1"):
+    def __init__(self, generations, parallel=5):
         self.generations = generations
         self.lock = mp.Lock()
         self.par = parallel
-        self.level = level
 
     def _fitness_func(self, genome, config, queue):
         env = gym.make('snake-tiled-v0')
@@ -66,7 +65,7 @@ class Train:
         p.add_reporter(neat.Checkpointer(5))
         stats = neat.StatisticsReporter()
         p.add_reporter(stats)
-        print("loaded checkpoint...")
+        #print("loaded checkpoint...")
         winner = p.run(self._eval_genomes, n)
         pickle.dump(winner, open('winner.pkl', 'wb'))
 
@@ -81,5 +80,5 @@ class Train:
 
 
 if __name__ == "__main__":
-    t = Train(1000)
+    t = Train(10000)
     t.main()

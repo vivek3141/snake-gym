@@ -1,7 +1,7 @@
 import pygame
 import random
 
-FPS = 5
+FPS = 60
 SCREEN_WIDTH, SCREEN_HEIGHT = 150, 150
 
 GRIDSIZE = 15
