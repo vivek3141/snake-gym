@@ -5,8 +5,8 @@ import pickle
 import multiprocessing as mp
 from visualize import *
 import os
-os.chdir("checkpoints")
 
+os.chdir("checkpoints")
 
 gym.logger.set_level(40)
 
@@ -68,7 +68,7 @@ class Train:
         config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                              neat.DefaultSpeciesSet, neat.DefaultStagnation,
                              config_file)
-        #p = neat.Population(config)
+        # p = neat.Population(config)
         p = neat.Checkpointer.restore_checkpoint("./checkpoints/neat-checkpoint-7")
         p.add_reporter(neat.StdOutReporter(True))
         p.add_reporter(neat.Checkpointer(generation_interval=5))
