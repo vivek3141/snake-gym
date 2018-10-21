@@ -68,7 +68,8 @@ class Train:
         config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                              neat.DefaultSpeciesSet, neat.DefaultStagnation,
                              config_file)
-        p = neat.Population(config)
+        #p = neat.Population(config)
+        p = neat.Checkpointer.restore_checkpoint("./checkpoints/neat-checkpoint-7")
         p.add_reporter(neat.StdOutReporter(True))
         p.add_reporter(neat.Checkpointer(generation_interval=5))
         stats = neat.StatisticsReporter()
