@@ -1,4 +1,4 @@
-# Snake AI
+# Snake-gym
 Contains a gym environment for the classic game snake.
 <br>
 Implementation for the NEAT algorithm and RL agents can be found in `examples/`

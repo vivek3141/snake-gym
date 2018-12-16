@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='snake_gym',
-    version='1.6',
+    version='1.7',
     author="Vivek Verma",
     packages=["snake_gym"],
     author_email="vivnps.verma@gmail.com",
