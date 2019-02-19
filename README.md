@@ -1,4 +1,10 @@
-# Snake-gym
+# Snake-AI
+## Snake-Gym
+[![Downloads](https://pepy.tech/badge/snake-gym)](https://pepy.tech/project/snake-gym)
+[![PyPi Version](https://img.shields.io/pypi/v/snake-gym.svg)](https://pypi.python.org/pypi/snake-gym)
+[![Python Compatibility](https://img.shields.io/pypi/pyversions/snake-gym.svg)](https://pypi.python.org/pypi/snake-gym)
+[![License](https://img.shields.io/pypi/l/snake-gym.svg)](https://pypi.python.org/pypi/snake-gym)<br>
+
 Contains a gym environment for the classic game snake.
 <br>
 Implementation for the NEAT algorithm and RL agents can be found in `examples/`
