@@ -16,7 +16,7 @@ Contains a gym environment for the classic game snake.
 ## Installation
 For the latest installation, run
 ```bash
-git clone https://github.com/vivek3141/snake-ai
+git clone https://github.com/vivek3141/snake-gym
 pip install -e .
 ```
 You can install the latest release by
